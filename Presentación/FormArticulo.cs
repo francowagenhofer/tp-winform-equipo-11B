@@ -10,17 +10,11 @@ using System.Windows.Forms;
 
 namespace Presentación
 {
-    public partial class FormArticulos : Form
+    public partial class FormArticulo : Form
     {
-        public FormArticulos()
+        public FormArticulo()
         {
             InitializeComponent();
         }
-
-        private void FormArticulos_Load(object sender, EventArgs e)
-        {
-
-        }
-
     }
 }

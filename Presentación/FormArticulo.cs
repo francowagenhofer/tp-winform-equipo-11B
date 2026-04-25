@@ -43,7 +43,17 @@ namespace Presentación
                 cbCategoria.ValueMember = "Id";
                 cbCategoria.DisplayMember = "Descripcion";
 
+                if (articulo != null)
+                {
+                    tbCodigo.Text = articulo.Codigo;
+                    tbNombre.Text = articulo.Nombre;
+                    tbDescripcion.Text = articulo.Descripcion;
+                    tbPrecio.Text = articulo.Precio.ToString();
 
+                    cbMarca.SelectedValue = articulo.Marca.Id;
+                    cbCategoria.SelectedValue = articulo.Categoria.Id;
+
+                }
             }
             catch (Exception ex)
             {
@@ -67,9 +77,14 @@ namespace Presentación
                 articulo.Precio = decimal.Parse(tbPrecio.Text);
                 articulo.Marca = (Marca)cbMarca.SelectedItem;   
                 articulo.Categoria = (Categoria)cbCategoria.SelectedItem;
-               
 
-                if (articulo.Id == 0)
+
+                if (articulo.Id != 0)
+                {
+                    negocio.modificarArticulo(articulo);
+                    MessageBox.Show("Modificado exitosamente");
+                }
+                else
                 {
                     negocio.agregarArticulo(articulo);
                     MessageBox.Show("Agregado exitosamente");

@@ -18,10 +18,12 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("Select Codigo, Nombre, A.Descripcion, C.Descripcion as Categoria, M.Descripcion as Marca, Precio, A.IdMarca, A.IdCategoria, A.Id " +
+                datos.setearConsulta("Select Codigo, Nombre, A.Descripcion, C.Descripcion as Categoria," +
+                    " M.Descripcion as Marca, Precio, A.IdMarca, A.IdCategoria, A.Id " +
                     "from ARTICULOS A, CATEGORIAS C, MARCAS M " +
                     "where A.IdMarca = M.Id " +
                     "and A.IdCategoria = C.Id");
+               
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -66,7 +68,8 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("Insert into ARTICULOS (Codigo, Nombre, Descripcion, Precio, IdMarca, IdCategoria) values (@codigo, @nombre, @descripcion,   @Precio, @idMarca, @idCategoria )");
+                datos.setearConsulta("Insert into ARTICULOS (Codigo, Nombre, Descripcion, Precio, IdMarca, IdCategoria) " +
+                    "values (@codigo, @nombre, @descripcion, @Precio, @idMarca, @idCategoria )");
 
                 datos.setearParametro("@codigo", nuevo.Codigo);
                 datos.setearParametro("@nombre", nuevo.Nombre);
@@ -90,7 +93,9 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("update ARTICULOS set Codigo = @codigo, Nombre = @nombre, Descripcion = @descripcion, Precio = @Precio, IdMarca = @idmarca, IdCategoria = @idcategoria Where Id = @id");
+                datos.setearConsulta("update ARTICULOS set Codigo = @codigo, Nombre = @nombre, Descripcion = @descripcion, " +
+                    "Precio = @Precio, IdMarca = @idmarca, IdCategoria = @idcategoria Where Id = @id");
+               
                 datos.setearParametro("@codigo", articulo.Codigo);
                 datos.setearParametro("@nombre", articulo.Nombre);
                 datos.setearParametro("@Precio", articulo.Precio);

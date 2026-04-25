@@ -10,7 +10,6 @@ namespace Negocio
 {
     public class MarcaNegocio
     {
-        // Listar Marca
         public List<Marca> listarMarcas()
         {
             List<Marca> lista = new List<Marca>();
@@ -43,7 +42,6 @@ namespace Negocio
             }
         }
 
-        // Agregar Marca
         public void agregarMarca(Marca nueva)
         {
             AccesoDatos datos = new AccesoDatos();
@@ -59,7 +57,6 @@ namespace Negocio
             }
         }
 
-        // Modificar Marca
         public void modificarMarca(Marca marca)
         {
             AccesoDatos datos = new AccesoDatos();
@@ -76,7 +73,6 @@ namespace Negocio
             }
         }
 
-        // Eliminar Marca
         public void eliminarMarca(int id)
         {
             AccesoDatos datos = new AccesoDatos();

@@ -10,7 +10,6 @@ namespace Negocio
 {
     public class CategoriaNegocio
     {
-        // Listar Categorias
         public List<Categoria> ListarCategorias()
         {
             AccesoDatos datos = new AccesoDatos();
@@ -44,8 +43,6 @@ namespace Negocio
             }
         }
 
-
-        // Agregar Categoria
         public void AgregarCategoria(Categoria nueva)
         {
             AccesoDatos datos = new AccesoDatos();
@@ -61,7 +58,6 @@ namespace Negocio
             }
         }
 
-        // Modificar Categoria
         public void ModificarCategoria(Categoria categoria)
         {
             AccesoDatos datos = new AccesoDatos();
@@ -78,8 +74,6 @@ namespace Negocio
             }
         }
 
-
-        // Eliminar Categoria
         public void EliminarCategoria(int id)
         {
             AccesoDatos datos = new AccesoDatos();

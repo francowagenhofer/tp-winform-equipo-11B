@@ -2,18 +2,14 @@
 using Negocio;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Presentación
 {
     public partial class FormArticulos : Form
     {
+        private List<Articulo> listaArticulo;
+
         public FormArticulos()
         {
             InitializeComponent();
@@ -21,22 +17,57 @@ namespace Presentación
 
         private void FormArticulos_Load(object sender, EventArgs e)
         {
-            ArticuloNegocio articulo = new ArticuloNegocio();
+            cargar();
+        }
+
+        private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
+        {
+            
+            if (dgvArticulos.CurrentRow != null)
+            {
+                Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow?.DataBoundItem;
+                cargarImagen(seleccionado.Id);
+            }    
+        }
+
+        private void cargar()
+        {
+            ArticuloNegocio articuloNegocio = new ArticuloNegocio();
 
             try
             {
-                dgvArticulos.DataSource = articulo.listarArticulos();
+                listaArticulo = articuloNegocio.listarArticulos();
+                dgvArticulos.DataSource = listaArticulo;
+
+                if (listaArticulo.Count > 0)
+                    cargarImagen(listaArticulo[0].Id);
+
                 ocultarColumnas();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void cargarImagen(int idArticulo)
+        {
+            ImagenNegocio imagenNegocio = new ImagenNegocio();
+         
+            try
+            {
+                string imagenUrl = imagenNegocio.obtenerImagen(idArticulo);
+                pbImagen.Load(imagenUrl);
+            }
+            catch
+            {
+                pbImagen.Load("https://dummyimage.com/300x300/cccccc/000000&text=Sin+Imagen");
             }
         }
 
         private void ocultarColumnas()
         {
-            dgvArticulos.Columns["Id"].Visible = false;
+            dgvArticulos.Columns["Id"].Visible = true;
             dgvArticulos.Columns["Nombre"].Visible = true;
             dgvArticulos.Columns["Codigo"].Visible = false;
             dgvArticulos.Columns["Descripcion"].Visible = false;
@@ -45,26 +76,30 @@ namespace Presentación
             dgvArticulos.Columns["Precio"].Visible = true;
         }
 
-        private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cargarImagen(string imagen)
-        {
-
-        }
-
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             FormArticulo alta = new FormArticulo();
             alta.ShowDialog();
         }
 
-        private void tbFiltroRapido_TextChanged(object sender, EventArgs e)
+
+        private void btnModificar_Click(object sender, EventArgs e)
         {
 
         }
 
+        private void btnDetalle_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void tbFiltroRapido_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

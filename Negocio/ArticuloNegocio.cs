@@ -10,7 +10,6 @@ namespace Negocio
 {
     public class ArticuloNegocio
     {
-        // Listar Artículos
         public List<Articulo> listarArticulos()
         {
             AccesoDatos datos = new AccesoDatos();
@@ -62,7 +61,6 @@ namespace Negocio
             }
         }
 
-        // Agregar Artículo
        public void agregarArticulo(Articulo nuevo)
        {
             AccesoDatos datos = new AccesoDatos();
@@ -86,8 +84,6 @@ namespace Negocio
             }
         }
 
-
-        // Modificar Artículo
         public void modificarArticulo(Articulo articulo)
         {
             AccesoDatos datos = new AccesoDatos();
@@ -112,7 +108,6 @@ namespace Negocio
             }
         }
 
-        // Eliminar Artículo
         public void eliminarArticulo(int id)
         {
             try
@@ -129,6 +124,5 @@ namespace Negocio
             }
         }
 
-        // Filtrar Artículos
     }
 }

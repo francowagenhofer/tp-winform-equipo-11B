@@ -8,13 +8,17 @@ namespace Negocio
 {
     public class ImagenNegocio
     {
-        // LISTAR
+        // Listar Imagenes
+        
+ 
+        // Agregar Imagen
 
-        // AGREGAR
+        
+        
+        // Modificar Imagen
 
-        // MODIFICAR
 
-        // ELIMINAR
+        // Eliminar Imagen
 
     }
 }

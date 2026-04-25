@@ -24,7 +24,7 @@ namespace Presentación
 
             try
             {
-                dgvArticulos.DataSource = articulo.listar();
+                dgvArticulos.DataSource = articulo.listarArticulos();
                 ocultarColumnas();
             }
             catch (Exception ex)
@@ -44,5 +44,9 @@ namespace Presentación
             dgvArticulos.Columns["Precio"].Visible = true;
         }
 
+        private void tbFiltroRapido_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

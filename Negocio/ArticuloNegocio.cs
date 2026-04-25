@@ -10,7 +10,8 @@ namespace Negocio
 {
     public class ArticuloNegocio
     {
-        public List<Articulo> listar()
+        // Listar Artículos
+        public List<Articulo> listarArticulos()
         {
             AccesoDatos datos = new AccesoDatos();
             List<Articulo> lista = new List<Articulo>();
@@ -59,9 +60,70 @@ namespace Negocio
             }
         }
 
+        // Agregar Artículo
+       public void agregarArticulo(Articulo nuevo)
+       {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("Insert into ARTICULOS (Codigo, Nombre, Descripcion, Precio, IdMarca, IdCategoria) values (@codigo, @nombre, @descripcion,   @Precio, @idMarca, @idCategoria )");
 
-        // AGREGAR
-        // MODIFICAR
-        // ELIMINAR
+                datos.setearParametro("@codigo", nuevo.Codigo);
+                datos.setearParametro("@nombre", nuevo.Nombre);
+                datos.setearParametro("@descripcion", nuevo.Descripcion);
+                datos.setearParametro("@Precio", nuevo.Precio);
+                datos.setearParametro("@idMarca", nuevo.Marca.Id);
+                datos.setearParametro("@idCategoria", nuevo.Categoria.Id);
+
+                datos.ejecutarAccion();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+
+        // Modificar Artículo
+        public void modificarArticulo(Articulo articulo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("update ARTICULOS set Codigo = @codigo, Nombre = @nombre, Descripcion = @descripcion, Precio = @Precio, IdMarca = @idmarca, IdCategoria = @idcategoria Where Id = @id");
+                datos.setearParametro("@codigo", articulo.Codigo);
+                datos.setearParametro("@nombre", articulo.Nombre);
+                datos.setearParametro("@Precio", articulo.Precio);
+                datos.setearParametro("@descripcion", articulo.Descripcion);
+                datos.setearParametro("@idmarca", articulo.Marca.Id);
+                datos.setearParametro("@idcategoria", articulo.Categoria.Id);
+                datos.setearParametro("@id", articulo.Id);
+
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        // Eliminar Artículo
+        public void eliminarArticulo(int id)
+        {
+            try
+            {
+                AccesoDatos datos = new AccesoDatos();
+                datos.setearConsulta("delete from ARTICULOS where id = @id");
+                datos.setearParametro("@id", id);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        // Filtrar Artículos
     }
 }

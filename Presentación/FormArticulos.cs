@@ -1,4 +1,5 @@
-﻿using Negocio;
+﻿using Dominio;
+using Negocio;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -44,7 +45,12 @@ namespace Presentación
             dgvArticulos.Columns["Precio"].Visible = true;
         }
 
-        private void tbFiltroRapido_TextChanged(object sender, EventArgs e)
+        private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cargarImagen(string imagen)
         {
 
         }
@@ -55,7 +61,10 @@ namespace Presentación
             alta.ShowDialog();
         }
 
+        private void tbFiltroRapido_TextChanged(object sender, EventArgs e)
+        {
 
+        }
 
     }
 }

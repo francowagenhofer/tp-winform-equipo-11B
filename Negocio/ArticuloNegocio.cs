@@ -18,7 +18,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("select Codigo, Nombre, A.Descripcion, C.Descripcion as Categoria, M.Descripcion as Marca, Precio, A.IdMarca, A.IdCategoria, A.Id " +
+                datos.setearConsulta("Select Codigo, Nombre, A.Descripcion, C.Descripcion as Categoria, M.Descripcion as Marca, Precio, A.IdMarca, A.IdCategoria, A.Id " +
                     "from ARTICULOS A, CATEGORIAS C, MARCAS M " +
                     "where A.IdMarca = M.Id " +
                     "and A.IdCategoria = C.Id");

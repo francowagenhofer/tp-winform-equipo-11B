@@ -67,60 +67,6 @@ namespace Presentación
             }
         }
 
-        private void btnAceptar_Click(object sender, EventArgs e)
-        {
-            ArticuloNegocio negocio = new ArticuloNegocio();
-
-            try
-            {
-                if (articulo == null)
-                    articulo = new Articulo();
-
-                articulo.Codigo = tbCodigo.Text;
-                articulo.Nombre = tbNombre.Text;
-                articulo.Descripcion = tbDescripcion.Text;
-                articulo.Precio = decimal.Parse(tbPrecio.Text);
-                articulo.Marca = (Marca)cbMarca.SelectedItem;
-                articulo.Categoria = (Categoria)cbCategoria.SelectedItem;
-
-                articulo.Imagenes = imagenesArticulo;
-
-
-                if (articulo.Id != 0)
-                {
-                    negocio.modificarArticulo(articulo);
-                    MessageBox.Show("Modificado exitosamente");
-                }
-                else
-                {
-                    negocio.agregarArticulo(articulo);
-
-                    ImagenNegocio imagenNegocio = new ImagenNegocio();
-
-                    foreach (Imagen img in imagenesArticulo)
-                    {
-                        img.IdArticulo = articulo.Id;
-                        imagenNegocio.agregarImagen(img);
-                    }
-
-                    MessageBox.Show("Agregado exitosamente");
-                }
-
-                Close();
-
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.ToString());
-            }
-        }
-
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
         private void cargarImagen(string imagen)
         {
             try
@@ -145,6 +91,8 @@ namespace Presentación
             }
         }
 
+
+        // falta modificar
         private void btnAgregarImagen_Click(object sender, EventArgs e)
         {
             string url = tbUrlImagen.Text.Trim();
@@ -157,6 +105,7 @@ namespace Presentación
             listaImagenes.SelectedIndex = imagenesArticulo.Count - 1;
         }
 
+        // falta modificar
         private void btnEliminarImagen_Click(object sender, EventArgs e)
         {
             Imagen seleccionada = listaImagenes.SelectedItem as Imagen;
@@ -214,5 +163,73 @@ namespace Presentación
             listaImagenes.DataSource = imagenesArticulo;
             listaImagenes.DisplayMember = "ImagenUrl";
         }
+
+
+        // falta modificar
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            ImagenNegocio imagenNegocio = new ImagenNegocio();
+
+            try
+            {
+                if (articulo == null)
+                    articulo = new Articulo();
+
+                articulo.Codigo = tbCodigo.Text;
+                articulo.Nombre = tbNombre.Text;
+                articulo.Descripcion = tbDescripcion.Text;
+                articulo.Precio = decimal.Parse(tbPrecio.Text);
+                articulo.Marca = (Marca)cbMarca.SelectedItem;
+                articulo.Categoria = (Categoria)cbCategoria.SelectedItem;
+
+                articulo.Imagenes = imagenesArticulo;
+
+
+                if (articulo.Id != 0)
+                {
+                    negocio.modificarArticulo(articulo);
+
+                    // Solo agrego imagenes nuevas, las que ya existen no las modifico ni elimino
+                    foreach (Imagen img in imagenesArticulo)
+                    {
+                        if (img.Id == 0)
+                        {
+                            img.IdArticulo = articulo.Id;
+                            imagenNegocio.agregarImagen(img);
+                        }
+                    }
+
+                    MessageBox.Show("Modificado exitosamente");
+                }
+                else
+                {
+                    articulo.Id = negocio.agregarArticulo(articulo);
+
+
+                    foreach (Imagen img in imagenesArticulo)
+                    {
+                        img.IdArticulo = articulo.Id;
+                        imagenNegocio.agregarImagen(img);
+                    }
+
+                    MessageBox.Show("Agregado exitosamente");
+                }
+
+                Close();
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
     }
 }

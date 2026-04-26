@@ -63,6 +63,18 @@ namespace Datos
             comando.Parameters.AddWithValue(nombre, valor);
         }
 
+        public int ejecutarScalar()
+        {
+            try
+            {
+                return Convert.ToInt32(comando.ExecuteScalar());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public void cerrarConexion()
         {
             if (lector != null)

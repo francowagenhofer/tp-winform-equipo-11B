@@ -22,7 +22,7 @@ namespace Negocio
                     "from ARTICULOS A, CATEGORIAS C, MARCAS M " +
                     "where A.IdMarca = M.Id " +
                     "and A.IdCategoria = C.Id");
-               
+
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -61,26 +61,32 @@ namespace Negocio
             }
         }
 
-       public void agregarArticulo(Articulo nuevo)
-       {
+        public int agregarArticulo(Articulo nuevo)
+        {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("Insert into ARTICULOS (Codigo, Nombre, Descripcion, Precio, IdMarca, IdCategoria) " +
-                    "values (@codigo, @nombre, @descripcion, @Precio, @idMarca, @idCategoria )");
+                datos.setearConsulta(@" Insert into ARTICULOS (Codigo, Nombre, Descripcion, Precio, IdMarca, IdCategoria)
+                                        VALUES (@codigo, @nombre, @descripcion, @precio, @idMarca, @idCategoria);
+
+                                        SELECT SCOPE_IDENTITY();");
 
                 datos.setearParametro("@codigo", nuevo.Codigo);
                 datos.setearParametro("@nombre", nuevo.Nombre);
                 datos.setearParametro("@descripcion", nuevo.Descripcion);
-                datos.setearParametro("@Precio", nuevo.Precio);
+                datos.setearParametro("@precio", nuevo.Precio);
                 datos.setearParametro("@idMarca", nuevo.Marca.Id);
                 datos.setearParametro("@idCategoria", nuevo.Categoria.Id);
 
-                datos.ejecutarAccion();
+                return datos.ejecutarScalar();
             }
             catch (Exception)
             {
                 throw;
+            }
+            finally
+            {
+                datos.cerrarConexion();
             }
         }
 
@@ -91,7 +97,7 @@ namespace Negocio
             {
                 datos.setearConsulta("update ARTICULOS set Codigo = @codigo, Nombre = @nombre, Descripcion = @descripcion, " +
                     "Precio = @Precio, IdMarca = @idmarca, IdCategoria = @idcategoria Where Id = @id");
-               
+
                 datos.setearParametro("@codigo", articulo.Codigo);
                 datos.setearParametro("@nombre", articulo.Nombre);
                 datos.setearParametro("@Precio", articulo.Precio);
@@ -106,13 +112,17 @@ namespace Negocio
             {
                 throw ex;
             }
+            finally
+            {
+                datos.cerrarConexion();
+            }
         }
 
         public void eliminarArticulo(int id)
         {
+            AccesoDatos datos = new AccesoDatos();
             try
             {
-                AccesoDatos datos = new AccesoDatos();
                 datos.setearConsulta("delete from ARTICULOS where id = @id");
                 datos.setearParametro("@id", id);
                 datos.ejecutarAccion();
@@ -121,6 +131,10 @@ namespace Negocio
             {
 
                 throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
             }
         }
 
@@ -191,6 +205,10 @@ namespace Negocio
             catch (Exception ex)
             {
                 throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
             }
 
         }

@@ -10,7 +10,6 @@ namespace Negocio
 {
     public class ImagenNegocio
     {
-        // Listar imágenes por Artículo
         public List<Imagen> listarImagenesPorArticulo(int idArticulo)
         {
             AccesoDatos datos = new AccesoDatos();
@@ -45,7 +44,6 @@ namespace Negocio
             }
         }
 
-        // Obtener la primer imagen de un artículo
         public string obtenerImagen(int idArticulo)
         {
             AccesoDatos datos = new AccesoDatos();

@@ -32,8 +32,8 @@ namespace Presentación
 
             try
             {
-                listaCategoria = categoriaNegocio.listarCategorias();
-                dgvCategorias.DataSource = listaCategoria;
+                dgvCategorias.DataSource = categoriaNegocio.listarCategorias();
+                dgvCategorias.Columns["Id"].ReadOnly = true;
             }
             catch (Exception ex)
             {
@@ -48,11 +48,49 @@ namespace Presentación
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
+            CategoriaNegocio negocio = new CategoriaNegocio();
+            Categoria seleccionado;
 
+            try
+            {
+                seleccionado = (Categoria)dgvCategorias.CurrentRow.DataBoundItem;
+                negocio.modificarCategoria(seleccionado);
+
+                MessageBox.Show("Modificado exitosamente");
+                cargar();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
+            CategoriaNegocio negocio = new CategoriaNegocio();
+            Categoria seleccionado;
+
+            try
+            {
+                DialogResult respuesta = MessageBox.Show(
+                    "¿De verdad querés eliminar la categoría?", "Eliminando",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (respuesta == DialogResult.Yes)
+                {
+                    seleccionado = (Categoria)dgvCategorias.CurrentRow.DataBoundItem;
+
+                    negocio.eliminarCategoria(seleccionado.Id);
+
+                    MessageBox.Show("Eliminado exitosamente");
+                    cargar();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
         }
 

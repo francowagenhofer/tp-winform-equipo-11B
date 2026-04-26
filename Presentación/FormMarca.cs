@@ -33,7 +33,18 @@ namespace Presentación
             try
             {
                 listaMarca = marcaNegocio.listarMarcas();
+
+                dgvMarcas.DataSource = null;
                 dgvMarcas.DataSource = listaMarca;
+
+                dgvMarcas.AllowUserToAddRows = true;
+                dgvMarcas.ReadOnly = false;
+
+                dgvMarcas.Columns["Id"].ReadOnly = true;
+
+                dgvMarcas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                dgvMarcas.MultiSelect = false;
+
             }
             catch (Exception ex)
             {
@@ -49,12 +60,49 @@ namespace Presentación
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
+            MarcaNegocio negocio = new MarcaNegocio();
+            Marca seleccionado;
 
+            try
+            {
+                seleccionado = (Marca)dgvMarcas.CurrentRow.DataBoundItem;
+                negocio.modificarMarca(seleccionado);
+
+                MessageBox.Show("Modificado exitosamente");
+                cargar();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
+            MarcaNegocio negocio = new MarcaNegocio();
+            Marca seleccionado;
 
+            try
+            {
+                DialogResult respuesta = MessageBox.Show(
+                    "¿De verdad querés eliminar la marca?", "Eliminando",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (respuesta == DialogResult.Yes)
+                {
+                    seleccionado = (Marca)dgvMarcas.CurrentRow.DataBoundItem;
+
+                    negocio.eliminarMarca(seleccionado.Id);
+
+                    MessageBox.Show("Eliminado exitosamente");
+                    cargar();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnLimpiarFiltro_Click(object sender, EventArgs e)

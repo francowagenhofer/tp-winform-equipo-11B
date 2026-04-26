@@ -102,7 +102,7 @@
             this.dgvMarcas.Size = new System.Drawing.Size(501, 223);
             this.dgvMarcas.StandardTab = true;
             this.dgvMarcas.TabIndex = 0;
-            this.dgvMarcas.SelectionChanged += new System.EventHandler(this.dgvArticulos_SelectionChanged);
+            this.dgvMarcas.SelectionChanged += new System.EventHandler(this.dgvMarcas_SelectionChanged);
             // 
             // tableLayoutPanel1
             // 
@@ -273,6 +273,7 @@
             this.MaximumSize = new System.Drawing.Size(620, 530);
             this.MinimumSize = new System.Drawing.Size(620, 530);
             this.Name = "FormMarca";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FormMarca";
             this.Load += new System.EventHandler(this.FormMarca_Load);
             this.tlp1.ResumeLayout(false);

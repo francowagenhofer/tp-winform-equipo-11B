@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Dominio;
+using Negocio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +14,8 @@ namespace Presentación
 {
     public partial class FormCategoria : Form
     {
+        private List<Categoria> listaCategoria;
+
         public FormCategoria()
         {
             InitializeComponent();
@@ -19,7 +23,22 @@ namespace Presentación
 
         private void FormCategoria_Load(object sender, EventArgs e)
         {
+            cargar(); 
+        }
+       
+        private void cargar()
+        {
+            CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
 
+            try
+            {
+                listaCategoria = categoriaNegocio.listarCategorias();
+                dgvCategorias.DataSource = listaCategoria;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -39,7 +58,9 @@ namespace Presentación
 
         private void btnLimpiarFiltro_Click(object sender, EventArgs e)
         {
-
+            tbFiltroRapido.Clear();
+            dgvCategorias.DataSource = null;
+            dgvCategorias.DataSource = listaCategoria;
         }
     }
 }

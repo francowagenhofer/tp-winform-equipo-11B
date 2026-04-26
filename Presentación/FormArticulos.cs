@@ -249,7 +249,6 @@ namespace Presentación
             FormCategoria gestion = new FormCategoria();
             gestion.ShowDialog();
         }
-
         
     }
 }

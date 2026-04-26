@@ -157,8 +157,8 @@
             this.tableLayoutPanel1.Location = new System.Drawing.Point(76, 608);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 58.60806F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 41.39194F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 49.0566F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.9434F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1061, 212);
             this.tableLayoutPanel1.TabIndex = 1;
@@ -180,7 +180,7 @@
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 109F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1055, 118);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1055, 98);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // btnDetalle
@@ -253,12 +253,12 @@
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel6.Controls.Add(this.tableLayoutPanel8, 0, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 127);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 107);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 64F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(1055, 82);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(1055, 102);
             this.tableLayoutPanel6.TabIndex = 1;
             // 
             // labelTitulo
@@ -405,27 +405,27 @@
             // tableLayoutPanel8
             // 
             this.tableLayoutPanel8.ColumnCount = 2;
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.23642F));
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.76358F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel8.Controls.Add(this.btnCategorias, 1, 0);
             this.tableLayoutPanel8.Controls.Add(this.btnMarcas, 0, 0);
             this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel8.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
-            this.tableLayoutPanel8.RowCount = 1;
-            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(1049, 76);
+            this.tableLayoutPanel8.RowCount = 2;
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 95.2381F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.761905F));
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(1049, 96);
             this.tableLayoutPanel8.TabIndex = 0;
             // 
             // btnMarcas
             // 
             this.btnMarcas.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnMarcas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMarcas.Location = new System.Drawing.Point(10, 14);
+            this.btnMarcas.Location = new System.Drawing.Point(10, 29);
             this.btnMarcas.Margin = new System.Windows.Forms.Padding(10);
             this.btnMarcas.Name = "btnMarcas";
-            this.btnMarcas.Size = new System.Drawing.Size(486, 52);
+            this.btnMarcas.Size = new System.Drawing.Size(504, 52);
             this.btnMarcas.TabIndex = 0;
             this.btnMarcas.Text = "Gestionar Marcas";
             this.btnMarcas.UseVisualStyleBackColor = true;
@@ -435,10 +435,10 @@
             // 
             this.btnCategorias.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnCategorias.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCategorias.Location = new System.Drawing.Point(516, 14);
+            this.btnCategorias.Location = new System.Drawing.Point(534, 29);
             this.btnCategorias.Margin = new System.Windows.Forms.Padding(10);
             this.btnCategorias.Name = "btnCategorias";
-            this.btnCategorias.Size = new System.Drawing.Size(523, 52);
+            this.btnCategorias.Size = new System.Drawing.Size(505, 52);
             this.btnCategorias.TabIndex = 1;
             this.btnCategorias.Text = "Gestionar Categorias";
             this.btnCategorias.UseVisualStyleBackColor = true;

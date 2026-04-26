@@ -59,10 +59,12 @@ namespace Presentación
 
         private void btnLimpiarFiltro_Click(object sender, EventArgs e)
         {
-
+            tbFiltroRapido.Clear();
+            dgvMarcas.DataSource = null;
+            dgvMarcas.DataSource = listaMarca;
         }
 
-        private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
+        private void dgvMarcas_SelectionChanged(object sender, EventArgs e)
         {
 
         }

@@ -272,6 +272,7 @@
             this.MaximumSize = new System.Drawing.Size(620, 530);
             this.MinimumSize = new System.Drawing.Size(620, 530);
             this.Name = "FormCategoria";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FormCategoria";
             this.Load += new System.EventHandler(this.FormCategoria_Load);
             this.tlp1.ResumeLayout(false);

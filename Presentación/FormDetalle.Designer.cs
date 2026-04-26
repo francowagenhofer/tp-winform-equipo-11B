@@ -346,6 +346,8 @@
             // 
             this.btnVolver.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnVolver.BackColor = System.Drawing.Color.AliceBlue;
+            this.btnVolver.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnVolver.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVolver.Location = new System.Drawing.Point(420, 10);
             this.btnVolver.Margin = new System.Windows.Forms.Padding(10);
@@ -367,7 +369,7 @@
             this.Name = "FormDetalle";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Detalle ";
+            this.Text = "Detalle de Artículo";
             this.Load += new System.EventHandler(this.FormDetalle_Load);
             this.tlp1.ResumeLayout(false);
             this.tlpListado.ResumeLayout(false);

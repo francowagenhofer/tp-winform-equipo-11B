@@ -315,6 +315,8 @@
             // button1
             // 
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(11, 17);
             this.button1.Margin = new System.Windows.Forms.Padding(5);
@@ -327,6 +329,8 @@
             // btnAgregarImagen
             // 
             this.btnAgregarImagen.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnAgregarImagen.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAgregarImagen.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnAgregarImagen.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregarImagen.Location = new System.Drawing.Point(517, 5);
             this.btnAgregarImagen.Name = "btnAgregarImagen";
@@ -350,6 +354,8 @@
             // btnEliminarImagen
             // 
             this.btnEliminarImagen.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnEliminarImagen.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEliminarImagen.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnEliminarImagen.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminarImagen.Location = new System.Drawing.Point(517, 115);
             this.btnEliminarImagen.Name = "btnEliminarImagen";
@@ -394,6 +400,7 @@
             // btnCancelar
             // 
             this.btnCancelar.BackColor = System.Drawing.Color.MistyRose;
+            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancelar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.Location = new System.Drawing.Point(573, 10);
@@ -408,7 +415,9 @@
             // btnAceptar
             // 
             this.btnAceptar.BackColor = System.Drawing.Color.AliceBlue;
+            this.btnAceptar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAceptar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnAceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAceptar.Location = new System.Drawing.Point(268, 10);
             this.btnAceptar.Margin = new System.Windows.Forms.Padding(10);
@@ -430,7 +439,7 @@
             this.Name = "FormArticulo";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Artículo";
+            this.Text = "Agregar Artículo";
             this.Load += new System.EventHandler(this.FormArticulo_Load);
             this.tlp1.ResumeLayout(false);
             this.tlpListado.ResumeLayout(false);

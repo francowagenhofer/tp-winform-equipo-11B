@@ -278,6 +278,7 @@
             this.pbImagenes.Location = new System.Drawing.Point(3, 3);
             this.pbImagenes.Name = "pbImagenes";
             this.pbImagenes.Size = new System.Drawing.Size(665, 344);
+            this.pbImagenes.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbImagenes.TabIndex = 0;
             this.pbImagenes.TabStop = false;
             // 
@@ -308,7 +309,7 @@
             this.listaImagenes.ScrollAlwaysVisible = true;
             this.listaImagenes.Size = new System.Drawing.Size(592, 170);
             this.listaImagenes.TabIndex = 3;
-            this.listaImagenes.Visible = false;
+            this.listaImagenes.SelectedIndexChanged += new System.EventHandler(this.listaImagenes_SelectedIndexChanged);
             // 
             // tableLayoutPanel1
             // 

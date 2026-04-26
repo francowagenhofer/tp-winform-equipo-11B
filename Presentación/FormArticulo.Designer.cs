@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tlp1 = new System.Windows.Forms.TableLayoutPanel();
             this.tlpListado = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
@@ -46,15 +47,18 @@
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.pbImagenes = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.tbUrlImagen = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnArchivoImagen = new System.Windows.Forms.Button();
             this.btnAgregarImagen = new System.Windows.Forms.Button();
             this.listaImagenes = new System.Windows.Forms.ListBox();
             this.btnEliminarImagen = new System.Windows.Forms.Button();
+            this.tbUrlImagen = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAceptar = new System.Windows.Forms.Button();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tlp1.SuspendLayout();
             this.tlpListado.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -277,6 +281,7 @@
             this.pbImagenes.Location = new System.Drawing.Point(3, 3);
             this.pbImagenes.Name = "pbImagenes";
             this.pbImagenes.Size = new System.Drawing.Size(665, 344);
+            this.pbImagenes.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbImagenes.TabIndex = 0;
             this.pbImagenes.TabStop = false;
             // 
@@ -285,12 +290,12 @@
             this.tableLayoutPanel5.ColumnCount = 3;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.35878F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 86.64122F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.tableLayoutPanel5.Controls.Add(this.tbUrlImagen, 1, 0);
-            this.tableLayoutPanel5.Controls.Add(this.button1, 0, 0);
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 151F));
+            this.tableLayoutPanel5.Controls.Add(this.btnArchivoImagen, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.btnAgregarImagen, 2, 0);
             this.tableLayoutPanel5.Controls.Add(this.listaImagenes, 1, 2);
             this.tableLayoutPanel5.Controls.Add(this.btnEliminarImagen, 2, 2);
+            this.tableLayoutPanel5.Controls.Add(this.tbUrlImagen, 1, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 353);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
@@ -302,6 +307,61 @@
             this.tableLayoutPanel5.Size = new System.Drawing.Size(665, 221);
             this.tableLayoutPanel5.TabIndex = 1;
             // 
+            // btnArchivoImagen
+            // 
+            this.btnArchivoImagen.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnArchivoImagen.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnArchivoImagen.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnArchivoImagen.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnArchivoImagen.Location = new System.Drawing.Point(11, 17);
+            this.btnArchivoImagen.Margin = new System.Windows.Forms.Padding(5);
+            this.btnArchivoImagen.Name = "btnArchivoImagen";
+            this.btnArchivoImagen.Size = new System.Drawing.Size(45, 29);
+            this.btnArchivoImagen.TabIndex = 2;
+            this.btnArchivoImagen.Text = "+";
+            this.btnArchivoImagen.UseVisualStyleBackColor = true;
+            this.btnArchivoImagen.Click += new System.EventHandler(this.btnArchivoImagen_Click);
+            // 
+            // btnAgregarImagen
+            // 
+            this.btnAgregarImagen.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnAgregarImagen.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAgregarImagen.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnAgregarImagen.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregarImagen.Location = new System.Drawing.Point(516, 5);
+            this.btnAgregarImagen.Name = "btnAgregarImagen";
+            this.btnAgregarImagen.Size = new System.Drawing.Size(138, 53);
+            this.btnAgregarImagen.TabIndex = 1;
+            this.btnAgregarImagen.Text = "Añadir Imagen";
+            this.btnAgregarImagen.UseVisualStyleBackColor = true;
+            this.btnAgregarImagen.Click += new System.EventHandler(this.btnAgregarImagen_Click);
+            // 
+            // listaImagenes
+            // 
+            this.listaImagenes.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.listaImagenes.FormattingEnabled = true;
+            this.listaImagenes.ItemHeight = 16;
+            this.listaImagenes.Location = new System.Drawing.Point(75, 83);
+            this.listaImagenes.Name = "listaImagenes";
+            this.listaImagenes.ScrollAlwaysVisible = true;
+            this.listaImagenes.Size = new System.Drawing.Size(430, 116);
+            this.listaImagenes.TabIndex = 3;
+            this.listaImagenes.SelectedIndexChanged += new System.EventHandler(this.listaImagenes_SelectedIndexChanged);
+            // 
+            // btnEliminarImagen
+            // 
+            this.btnEliminarImagen.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnEliminarImagen.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEliminarImagen.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnEliminarImagen.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminarImagen.Location = new System.Drawing.Point(516, 115);
+            this.btnEliminarImagen.Name = "btnEliminarImagen";
+            this.btnEliminarImagen.Size = new System.Drawing.Size(138, 53);
+            this.btnEliminarImagen.TabIndex = 4;
+            this.btnEliminarImagen.Text = "Eliminar Imagen";
+            this.btnEliminarImagen.UseVisualStyleBackColor = true;
+            this.btnEliminarImagen.Click += new System.EventHandler(this.btnEliminarImagen_Click);
+            // 
             // tbUrlImagen
             // 
             this.tbUrlImagen.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -311,58 +371,6 @@
             this.tbUrlImagen.Size = new System.Drawing.Size(435, 27);
             this.tbUrlImagen.TabIndex = 0;
             this.tbUrlImagen.Text = "Url Imagen";
-            // 
-            // button1
-            // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(11, 17);
-            this.button1.Margin = new System.Windows.Forms.Padding(5);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(45, 29);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "+";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // btnAgregarImagen
-            // 
-            this.btnAgregarImagen.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnAgregarImagen.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAgregarImagen.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnAgregarImagen.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregarImagen.Location = new System.Drawing.Point(517, 5);
-            this.btnAgregarImagen.Name = "btnAgregarImagen";
-            this.btnAgregarImagen.Size = new System.Drawing.Size(138, 53);
-            this.btnAgregarImagen.TabIndex = 1;
-            this.btnAgregarImagen.Text = "Añadir Imagen";
-            this.btnAgregarImagen.UseVisualStyleBackColor = true;
-            // 
-            // listaImagenes
-            // 
-            this.listaImagenes.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.listaImagenes.FormattingEnabled = true;
-            this.listaImagenes.ItemHeight = 16;
-            this.listaImagenes.Location = new System.Drawing.Point(76, 83);
-            this.listaImagenes.Name = "listaImagenes";
-            this.listaImagenes.ScrollAlwaysVisible = true;
-            this.listaImagenes.Size = new System.Drawing.Size(430, 116);
-            this.listaImagenes.TabIndex = 3;
-            this.listaImagenes.Visible = false;
-            // 
-            // btnEliminarImagen
-            // 
-            this.btnEliminarImagen.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnEliminarImagen.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEliminarImagen.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnEliminarImagen.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEliminarImagen.Location = new System.Drawing.Point(517, 115);
-            this.btnEliminarImagen.Name = "btnEliminarImagen";
-            this.btnEliminarImagen.Size = new System.Drawing.Size(138, 53);
-            this.btnEliminarImagen.TabIndex = 4;
-            this.btnEliminarImagen.Text = "Eliminar Imagen";
-            this.btnEliminarImagen.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel1
             // 
@@ -428,6 +436,12 @@
             this.btnAceptar.UseVisualStyleBackColor = false;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
             // FormArticulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -481,8 +495,11 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.TextBox tbUrlImagen;
         private System.Windows.Forms.Button btnAgregarImagen;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnArchivoImagen;
         private System.Windows.Forms.ListBox listaImagenes;
         private System.Windows.Forms.Button btnEliminarImagen;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker2;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     }
 }

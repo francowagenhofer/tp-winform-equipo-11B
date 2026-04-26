@@ -91,30 +91,47 @@ namespace Presentación
             }
         }
 
-
-        // falta modificar
         private void btnAgregarImagen_Click(object sender, EventArgs e)
         {
-            string url = tbUrlImagen.Text.Trim();
-
-            if (string.IsNullOrWhiteSpace(url))
-                return;
-
-            imagenesArticulo.Add(new Imagen { ImagenUrl = url });
-            refrescarListaImagenes();
-            listaImagenes.SelectedIndex = imagenesArticulo.Count - 1;
-        }
-
-        // falta modificar
-        private void btnEliminarImagen_Click(object sender, EventArgs e)
-        {
-            Imagen seleccionada = listaImagenes.SelectedItem as Imagen;
-
-            if (seleccionada == null)
-                return;
+            Imagen nueva = new Imagen();
 
             try
             {
+                if (string.IsNullOrWhiteSpace(tbUrlImagen.Text))
+                {
+                    MessageBox.Show("Debe ingresar una URL de imagen.");
+                    return;
+                }
+
+                nueva.ImagenUrl = tbUrlImagen.Text.Trim();
+
+                imagenesArticulo.Add(nueva);
+
+                refrescarListaImagenes();
+
+                listaImagenes.SelectedIndex = imagenesArticulo.Count - 1;
+
+                tbUrlImagen.Clear();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+      
+        private void btnEliminarImagen_Click(object sender, EventArgs e)
+        {
+            ImagenNegocio negocio = new ImagenNegocio();
+            Imagen seleccionada;
+
+            try
+            {
+                if (listaImagenes.SelectedItem == null)
+                {
+                    MessageBox.Show("Debe seleccionar una imagen.");
+                    return;
+                }
+
                 DialogResult respuesta = MessageBox.Show(
                     "¿De verdad querés eliminar la imagen?",
                     "Eliminando",
@@ -123,15 +140,11 @@ namespace Presentación
 
                 if (respuesta == DialogResult.Yes)
                 {
-                    ImagenNegocio imagenNegocio = new ImagenNegocio();
+                    seleccionada = (Imagen)listaImagenes.SelectedItem;
 
-                    // Si ya existe en la base, eliminar de la BD
                     if (seleccionada.Id != 0)
-                    {
-                        imagenNegocio.eliminarImagen(seleccionada.Id);
-                    }
+                        negocio.eliminarImagen(seleccionada.Id);
 
-                    // Siempre eliminar de la lista
                     imagenesArticulo.Remove(seleccionada);
 
                     refrescarListaImagenes();

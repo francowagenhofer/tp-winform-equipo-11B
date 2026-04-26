@@ -43,10 +43,10 @@
             this.labelTitulo = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.cbCampo = new System.Windows.Forms.ComboBox();
             this.cbCriterio = new System.Windows.Forms.ComboBox();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.tbFiltroAvanzado = new System.Windows.Forms.TextBox();
+            this.cbCampo = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.tbFiltroRapido = new System.Windows.Forms.TextBox();
             this.btnLimpiarFiltro = new System.Windows.Forms.Button();
@@ -301,19 +301,6 @@
             this.tableLayoutPanel4.Size = new System.Drawing.Size(674, 42);
             this.tableLayoutPanel4.TabIndex = 3;
             // 
-            // cbCampo
-            // 
-            this.cbCampo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbCampo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbCampo.FormattingEnabled = true;
-            this.cbCampo.Location = new System.Drawing.Point(5, 5);
-            this.cbCampo.Margin = new System.Windows.Forms.Padding(5);
-            this.cbCampo.Name = "cbCampo";
-            this.cbCampo.Size = new System.Drawing.Size(171, 33);
-            this.cbCampo.TabIndex = 0;
-            this.cbCampo.Text = "Campo";
-            this.cbCampo.SelectedIndexChanged += new System.EventHandler(this.cbCampo_SelectedIndexChanged);
-            // 
             // cbCriterio
             // 
             this.cbCriterio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -354,6 +341,19 @@
             this.tbFiltroAvanzado.Name = "tbFiltroAvanzado";
             this.tbFiltroAvanzado.Size = new System.Drawing.Size(151, 30);
             this.tbFiltroAvanzado.TabIndex = 3;
+            // 
+            // cbCampo
+            // 
+            this.cbCampo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbCampo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbCampo.FormattingEnabled = true;
+            this.cbCampo.Location = new System.Drawing.Point(5, 5);
+            this.cbCampo.Margin = new System.Windows.Forms.Padding(5);
+            this.cbCampo.Name = "cbCampo";
+            this.cbCampo.Size = new System.Drawing.Size(171, 33);
+            this.cbCampo.TabIndex = 0;
+            this.cbCampo.Text = "Campo";
+            this.cbCampo.SelectedIndexChanged += new System.EventHandler(this.cbCampo_SelectedIndexChanged);
             // 
             // tableLayoutPanel7
             // 

@@ -16,6 +16,7 @@ namespace Presentación
     {
         private Articulo articulo = null;
         private List<Imagen> imagenesArticulo = new List<Imagen>();
+        private int indiceImagenActual = 0;
 
         public FormDetalle(Articulo articulo)
         {
@@ -51,10 +52,12 @@ namespace Presentación
 
                     imagenesArticulo = imagenNegocio.listarImagenesPorArticulo(articulo.Id);
                     refrescarListaImagenes();
-
+                    
                     if (imagenesArticulo.Count > 0)
-                        cargarImagen(imagenesArticulo[0].ImagenUrl);
-
+                    {
+                        indiceImagenActual = 0;
+                        mostrarImagenActual();
+                    }
                 }
             }
             catch (Exception ex)
@@ -85,16 +88,82 @@ namespace Presentación
     
         private void listaImagenes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listaImagenes.SelectedItem != null)
+            try
             {
-                Imagen seleccionada = (Imagen)listaImagenes.SelectedItem;
-                cargarImagen(seleccionada.ImagenUrl);
+                if (listaImagenes.SelectedIndex >= 0)
+                {
+                    indiceImagenActual = listaImagenes.SelectedIndex;
+                    mostrarImagenActual();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
             }
         }
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void btnAnterior_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (imagenesArticulo.Count == 0)
+                    return;
+
+                if (indiceImagenActual > 0)
+                    indiceImagenActual--;
+                else
+                    indiceImagenActual = imagenesArticulo.Count - 1; // va al final
+
+                mostrarImagenActual();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void btnSiguiente_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (imagenesArticulo.Count == 0)
+                    return;
+
+                if (indiceImagenActual < imagenesArticulo.Count - 1)
+                    indiceImagenActual++;
+                else
+                    indiceImagenActual = 0; // vuelve al inicio
+
+                mostrarImagenActual();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void mostrarImagenActual()
+        {
+            if (imagenesArticulo.Count == 0)
+            {
+                pbImagenes.Image = null;
+                lblContadorImagen.Text = "0 / 0";
+                return;
+            }
+
+            cargarImagen(imagenesArticulo[indiceImagenActual].ImagenUrl);
+
+            lblContadorImagen.Text =
+                (indiceImagenActual + 1).ToString() +
+                " / " +
+                imagenesArticulo.Count.ToString();
+
+            listaImagenes.SelectedIndex = indiceImagenActual;
         }
 
     }

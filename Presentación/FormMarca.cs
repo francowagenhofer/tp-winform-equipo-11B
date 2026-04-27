@@ -43,7 +43,6 @@ namespace Presentación
                 dgvMarcas.ReadOnly = false;
                 dgvMarcas.Columns["Id"].ReadOnly = true;
                 dgvMarcas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-                dgvMarcas.MultiSelect = false;
             }
             catch (Exception ex)
             {
